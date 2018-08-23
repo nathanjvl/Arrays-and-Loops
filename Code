@@ -1,0 +1,135 @@
+package arraysandloops;
+
+import java.util.Random;
+
+public class ArraysAndLoops {
+
+    public static void main(String[] args) {
+        System.out.println("The code has started executing!");
+
+        //use array
+        // prints out an array
+        int[] numbers = new int[18];
+
+        // ArraysAndLoops derp = new ArraysAndLoops();
+        // derp.printArray(numbers);
+        // the other way to do it without making it static
+        //cutted the code and created a method
+        populateArray(numbers);
+        printArray(numbers);
+        System.out.println("maximum: " + max(numbers));
+        System.out.println("sum: " + sum(numbers));
+        System.out.println("Is it a palindrom? " + isPalindrom(numbers));
+        System.out.println("Are there any duclicates? " + isDuplicate(numbers));
+
+        System.out.println("Where is the number 25? "+ find(numbers,25));
+    }
+
+    /*
+    for loop
+    static void printArray(int[] a) {
+        System.out.print("[");
+        for (int count = 0; count < a.length - 1; count++) {
+            System.out.print(a[count] + ", ");
+        }
+        System.out.print(a[a.length - 1] + "]");
+    }*/
+    //create a random object
+    //set counter to 0
+    //set the current element to some number from 0 to 99
+    static void populateArray(int[] a) {
+        Random r = new Random();
+
+        for (int count = 0; count < a.length; count++) {
+            a[count] = r.nextInt(100);
+        }
+
+    }
+
+    //enhanced for loop
+    static void printArray(int[] a) {
+        for (int n : a) {
+            System.out.print(n + " ");
+        }
+        System.out.println("");
+    }
+
+    static int max(int[] numbers) {
+        int max = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+
+        return max;
+
+    }
+
+    static int sum(int[] numbers) {
+
+        int arrayNum = numbers[0];
+        int sum = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            arrayNum = numbers[i];
+            sum = sum + arrayNum;
+
+        }
+        return sum;
+
+    }
+
+    static boolean isPalindrom(int[] numbers) {
+        Boolean palindrom = true;
+
+        for (int i = 0; i < numbers.length / 2; i++) {
+
+            if (numbers[i] != numbers[numbers.length - 1 - i]) {
+                // Remember to -1 with the maximum length because of the offset
+                palindrom = false;
+
+            }
+        }
+
+        return palindrom;
+
+    }
+
+    static boolean isDuplicate(int[] numbers) {
+
+        Boolean duplicate = false;
+
+        for (int i = 0; i < numbers.length; i++) {
+
+            // if () start with if it's equal to it, then do nothing, then go to
+            // else {} for everything else
+            // for in a for in an if
+            for (int n = 0; n < numbers.length; n++) {
+                if (!(i == n)) {
+                    if (numbers[i] == numbers[n]) {
+                        duplicate = true;
+                    } else {
+                        //remain empty (sees if they are duplicates)
+                    }
+
+                } else {
+                    //remain empty (checks if the counters are the same)
+                }
+            }
+
+        }
+        return duplicate;
+
+    }
+    
+    static int find(int[] numbers, int value) {
+        for(int i = 0; i < numbers.length;i++){
+            if(value == numbers[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+}
